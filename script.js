@@ -15,55 +15,44 @@ Al termine della partita il software deve comunicare il punteggio,
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una b.
 */
 
+// richiesta utente 
 let richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
+// richiamo del div nell' HTML 
+const griglia = document.getElementById('square');
+// variabile celleTotali + verifica richiesta utente 
+let celleTotali = valoreCella(richiestaUtente);
+// variabile bombe generate 
+let bombaGenerata = generaBombe(celleTotali);
+
 
 // ciclo di controllo 
 while (isNaN(richiestaUtente) || richiestaUtente > 3 || richiestaUtente < 1) {
     richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
 }
 
-// richiamo del div nell' HTML 
-const griglia = document.getElementById('square');
-
-// varibili colonne riga 
-let colonneGriglia = 0;
-let righeGriglia = 0;
-
-// Richiesta utente - cambia le variabili 
-if (richiestaUtente === 1) {
-    colonneGriglia = 10;
-    righeGriglia = 10;
-} else if (richiestaUtente === 2) {
-    colonneGriglia = 9;
-    righeGriglia = 9;
-} else {
-    colonneGriglia = 7;
-    righeGriglia = 7;
+// funzione celleTotali 
+function valoreCella(richiesta) {
+    if (richiesta === 1) {
+        totaleCelle = 100;
+    } else if (richiesta === 2) {
+        totaleCelle = 81;
+    } else {
+        totaleCelle = 49;
+    }
+    return totaleCelle;
 }
-
-// costante Celle Totali 
-let celleTotali = colonneGriglia * righeGriglia;
-// variabile bombe generate 
-let bombaGenerata = generaBombe(celleTotali);
-
 
 // funzione genera bombe  
 function generaBombe(numeroDifficoltà) {
-
     let bombe = [];
-
     for (let i = 0; i < 16; i++) {
         // questo ciclo mi serve per generare 16 numeri random
         let generaNumero = Math.floor(Math.random() * numeroDifficoltà + 1);
-
         while (bombe.includes(generaNumero)) {
             generaNumero = Math.floor(Math.random() * numeroDifficoltà + 1);
         }
-
         bombe.push(generaNumero);
-
     }
-
     return bombe;
 }
 
@@ -95,3 +84,4 @@ for (let i = 0; i < celleTotali; i++) {
     })
 }
 
+console.log(bombaGenerata);
