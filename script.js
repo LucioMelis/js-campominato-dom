@@ -24,13 +24,12 @@ while (isNaN(richiestaUtente) || richiestaUtente > 3 || richiestaUtente < 1) {
 
 // richiamo del div nell' HTML 
 const griglia = document.getElementById('square');
-// costante Celle Totali 
-const celleTotali = colonneGriglia * righeGriglia;
+
 // varibili colonne riga 
 let colonneGriglia = 0;
 let righeGriglia = 0;
 
-
+// Richiesta utente - cambia le variabili 
 if (richiestaUtente === 1) {
     colonneGriglia = 10;
     righeGriglia = 10;
@@ -42,6 +41,31 @@ if (richiestaUtente === 1) {
     righeGriglia = 7;
 }
 
+// costante Celle Totali 
+const celleTotali = colonneGriglia * righeGriglia;
+// variabile bombe generate 
+let bombaGenerata = generaBombe(celleTotali);
+
+
+// funzione genera bombe  
+function generaBombe(numeroDifficoltà) {
+
+    let bombe = [];
+
+    for (let i = 0; i < 16; i++) {
+        // questo ciclo mi serve per generare 16 numeri random
+        let generaNumero = Math.floor(Math.random() * numeroDifficoltà + 1);
+
+        while (bombe.includes(generaNumero)) {
+            generaNumero = Math.floor(Math.random() * numeroDifficoltà + 1);
+        }
+
+        bombe.push(generaNumero);
+
+    }
+
+    return bombe;
+}
 
 // utilizzo un ciclo for generare le celle 
 for (let i = 0; i < celleTotali; i++) {
