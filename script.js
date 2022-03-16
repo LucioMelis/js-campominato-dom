@@ -15,53 +15,52 @@ Al termine della partita il software deve comunicare il punteggio,
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una b.
 */
 
-const buttonEasy = document.getElementById('easy');
-const buttonMedium = document.getElementById('medium');
-const buttonHard = document.getElementById('hard');
+let richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
 
-buttonEasy.addEventListener('click', function () {
-    creazioneGrigliaClasse(100, 'cell-100');
-})
-buttonMedium.addEventListener('click', function () {
-    creazioneGrigliaClasse(81, 'cell-81');
-})
-buttonHard.addEventListener('click', function () {
-    creazioneGrigliaClasse(49, 'cell-49');
-})
-
-
-
-// funzione genera numeri random 
-function generaNumeroRandom(min, max) {
-
-    const range = max - min + 1;
-
-    const generatedNumber = Math.floor(Math.random() * range) + min;
-
-    return generatedNumber;
-
+// ciclo di controllo 
+while (isNaN(richiestaUtente) || richiestaUtente > 3 || richiestaUtente < 1) {
+    richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
 }
-// utilizzo un ciclo for generare le celle e la classe attraverso una funzione
-function creazioneGrigliaClasse(celleTotali, classe) {
 
-    const griglia = document.getElementById('square');
+// richiamo del div nell' HTML 
+const griglia = document.getElementById('square');
+// costante Celle Totali 
+const celleTotali = colonneGriglia * righeGriglia;
+// varibili colonne riga 
+let colonneGriglia = 0;
+let righeGriglia = 0;
 
-    griglia.innerHTML = '';
 
-    for (let i = 0; i < celleTotali; i++) {
+if (richiestaUtente === 1) {
+    colonneGriglia = 10;
+    righeGriglia = 10;
+} else if (richiestaUtente === 2) {
+    colonneGriglia = 9;
+    righeGriglia = 9;
+} else {
+    colonneGriglia = 7;
+    righeGriglia = 7;
+}
 
-        let celle = document.createElement('div');
 
-        celle.innerText = i + 1;
+// utilizzo un ciclo for generare le celle 
+for (let i = 0; i < celleTotali; i++) {
 
-        celle.classList.add(classe);
+    let celle = document.createElement('div');
 
-        griglia.appendChild(celle);
-
-        celle.addEventListener('click', function () {
-            celle.classList.toggle('cell-color');
-        })
+    if (celleTotali === 100) {
+        celle.classList.add('cell-100');
+    } else if (celleTotali === 81) {
+        celle.classList.add('cell-81');
+    } else {
+        celle.classList.add('cell-49');
     }
-}
 
+    griglia.appendChild(celle);
+    console.log(celle);
+    celle.innerText = i + 1;
+    celle.addEventListener('click', function () {
+        celle.classList.toggle('cell-color');
+    })
+}
 
