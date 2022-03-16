@@ -43,3 +43,7 @@
 .cell-color{
     background-color: cyan;
 }
+
+.cell-dangerous{
+    background-color: red;
+}

@@ -83,8 +83,15 @@ for (let i = 0; i < celleTotali; i++) {
     griglia.appendChild(celle);
     console.log(celle);
     celle.innerText = i + 1;
+
     celle.addEventListener('click', function () {
-        celle.classList.toggle('cell-color');
+
+        if (bombaGenerata.includes(celleTotali)) {
+            celle.classList.add('cell-dangerous');
+        } else {
+            celle.classList.add('cell-color');
+        }
+
     })
 }
 
