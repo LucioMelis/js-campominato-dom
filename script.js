@@ -70,7 +70,7 @@ for (let i = 0; i < celleTotali; i++) {
     }
 
     griglia.appendChild(celle);
-    console.log(celle);
+
     celle.innerText = i + 1;
 
     celle.addEventListener('click', function () {
@@ -84,4 +84,3 @@ for (let i = 0; i < celleTotali; i++) {
     })
 }
 
-console.log(bombaGenerata);
