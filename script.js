@@ -42,7 +42,7 @@ if (richiestaUtente === 1) {
 }
 
 // costante Celle Totali 
-const celleTotali = colonneGriglia * righeGriglia;
+let celleTotali = colonneGriglia * righeGriglia;
 // variabile bombe generate 
 let bombaGenerata = generaBombe(celleTotali);
 
@@ -86,12 +86,12 @@ for (let i = 0; i < celleTotali; i++) {
 
     celle.addEventListener('click', function () {
 
-        if (bombaGenerata.includes(celleTotali)) {
+        let prova = bombaGenerata.includes(i + 1);
+        if (prova === true) {
             celle.classList.add('cell-dangerous');
         } else {
             celle.classList.add('cell-color');
         }
-
     })
 }
 
