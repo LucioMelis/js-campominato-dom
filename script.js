@@ -30,7 +30,18 @@ buttonHard.addEventListener('click', function () {
 })
 
 
-// utilizzo un ciclo for generare le celle attraverso una funzione
+
+// funzione genera numeri random 
+function generaNumeroRandom(min, max) {
+
+    const range = max - min + 1;
+
+    const generatedNumber = Math.floor(Math.random() * range) + min;
+
+    return generatedNumber;
+
+}
+// utilizzo un ciclo for generare le celle e la classe attraverso una funzione
 function creazioneGrigliaClasse(celleTotali, classe) {
 
     const griglia = document.getElementById('square');
