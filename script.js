@@ -1,26 +1,23 @@
 console.log('JS Ok');
 
-// creare una griglia di gioco quadrata,
-// in cui ogni cella contiene un numero
-// tra quelli compresi in un range compreso tra 1 e 100
-// Quando l'utente clicca su ogni cella,
-// la cella cliccata si colora di azzurro.
+/*
+Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta:
+le bombe.
+I numeri nella lista delle bombe non possono essere duplicati.
+In seguito l'utente clicca su una cella:
+se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba -
+la cella si colora di rosso e la partita termina,
+altrimenti la cella cliccata si colora di azzurro e 
+l'utente può continuare a cliccare sulle altre celle.
+La partita termina quando il giocatore clicca su una bomba 
+o raggiunge il numero massimo possibile di numeri consentiti.
+Al termine della partita il software deve comunicare il punteggio,
+cioè il numero di volte che l’utente ha cliccato su una cella che non era una b.
+*/
 
-
-// BONUS:
-// L'utente indica un livello di difficoltà,
-// in base al livello scelto la griglia conterrà un range diverso:
-// con difficoltà 1 => tra 1 e 100
-// con difficoltà 2 => tra 1 e 81
-// con difficoltà 3 => tra 1 e 49 (modificato) 
-
-
-let richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
-
-// ciclo di controllo 
-while (isNaN(richiestaUtente) || richiestaUtente > 3 || richiestaUtente < 1) {
-    richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
-}
+const buttonEasy = document.getElementById('easy');
+const buttonMedium = document.getElementById('medium');
+const buttonHard = document.getElementById('hard');
 
 // richiamo del div nell' HTML 
 const griglia = document.getElementById('square');
@@ -28,6 +25,10 @@ const griglia = document.getElementById('square');
 // varibili colonne riga 
 let colonneGriglia = 0;
 let righeGriglia = 0;
+
+// costante Celle Totali 
+const celleTotali = colonneGriglia * righeGriglia;
+
 
 if (richiestaUtente === 1) {
     colonneGriglia = 10;
@@ -40,8 +41,6 @@ if (richiestaUtente === 1) {
     righeGriglia = 7;
 }
 
-// costante Celle Totali 
-const celleTotali = colonneGriglia * righeGriglia;
 
 // utilizzo un ciclo for generare le celle 
 for (let i = 0; i < celleTotali; i++) {
