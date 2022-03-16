@@ -22,10 +22,6 @@
     align-items: center;
 }
 
-.cell-color{
-    background-color: cyan;
-}
-
 .cell-81 {
     width: calc(100% / 9);
     height: calc(100% / 9);
@@ -42,4 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cell-color{
+    background-color: cyan;
 }
