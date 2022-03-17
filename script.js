@@ -98,6 +98,8 @@ for (let i = 0; i < celleTotali; i++) {
             }
         }
 
+        document.getElementById('point').innerHTML = punteggio;
+
     })
 
 }
