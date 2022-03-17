@@ -21,8 +21,11 @@ let richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
 const griglia = document.getElementById('square');
 // variabile celleTotali + verifica richiesta utente 
 let celleTotali = valoreCella(richiestaUtente);
-// variabile bombe generate 
-let bombaGenerata = generaBombe(celleTotali);
+// variabile array bombe generate 
+let bombeGenerate = generaBombe(celleTotali);
+console.log(bombeGenerate);
+// variabile punteggio 
+let punteggio = 0;
 
 
 // ciclo di controllo 
@@ -75,12 +78,26 @@ for (let i = 0; i < celleTotali; i++) {
 
     celle.addEventListener('click', function () {
 
-        let prova = bombaGenerata.includes(i + 1);
+        let prova = bombeGenerate.includes(i + 1);
+
         if (prova === true) {
             celle.classList.add('cell-dangerous');
+            griglia.classList.add('block-cell-red');
+            const gameOver = document.querySelector('.game-over');
+            gameOver.style.display = 'block';
+
         } else {
-            celle.classList.add('cell-color');
+            celle.classList.add('cell-good');
+            celle.classList.toggle('click-none');
+            punteggio += 1;
+            console.log(punteggio);
+            if (punteggio === (celleTotali - 16)) {
+                const winner = document.querySelector('.winner');
+                winner.style.display = 'block';
+                griglia.classList.add('click-none');
+            }
         }
+
     })
 }
 

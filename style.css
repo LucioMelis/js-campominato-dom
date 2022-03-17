@@ -17,7 +17,7 @@ h1{
 #square {
     width: 500px;
     height: 500px;
-    margin: 50px auto;
+    margin: 30px auto;
     background-color: lightgrey;
     display: flex;
     flex-wrap: wrap;
@@ -50,10 +50,42 @@ h1{
     align-items: center;
 }
 
-.cell-color{
-    background-color: cyan;
+.cell-good{
+    background-color: lightgreen;
 }
 
 .cell-dangerous{
     background-color: red;
+}
+
+.block-cell-red{
+    pointer-events: none;
+}
+
+.click-none{
+    pointer-events: none;
+}
+
+#result {
+    width: 500px;
+    background-color: lightgrey;
+    margin: 30px auto;
+}
+
+.game-over{
+    text-align: center;
+    display: none;
+}
+
+.game-over h2{
+    color: red;
+}
+
+.winner{
+   text-align: center;
+   display: none;
+}
+
+.winner h2{
+    color: green;
 }
